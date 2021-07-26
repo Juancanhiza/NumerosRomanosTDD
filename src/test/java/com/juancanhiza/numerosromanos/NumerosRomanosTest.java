@@ -25,4 +25,10 @@ public class NumerosRomanosTest {
         Assert.assertEquals(tresEnRomano, "III");
     }
 
+    @Test
+    public void CuatroANumeroRomano(){
+        String cuatroEnRomano = numerosRomanos.convertir(4);
+        Assert.assertEquals(cuatroEnRomano, "IV");
+    }
+
 }
