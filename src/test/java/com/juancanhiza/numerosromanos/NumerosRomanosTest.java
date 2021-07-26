@@ -19,4 +19,10 @@ public class NumerosRomanosTest {
         Assert.assertEquals(dosEnRomano, "II");
     }
 
+    @Test
+    public void TresANumeroRomano(){
+        String tresEnRomano = numerosRomanos.convertir(3);
+        Assert.assertEquals(tresEnRomano, "III");
+    }
+
 }
