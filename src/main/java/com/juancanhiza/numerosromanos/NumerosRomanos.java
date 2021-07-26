@@ -11,6 +11,8 @@ public class NumerosRomanos {
         switch (numeroNatural){
             case 4:
                 return "IV";
+            case 5:
+                return "V";
             default:
                 return null;
         }
