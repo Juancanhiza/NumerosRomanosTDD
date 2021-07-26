@@ -55,4 +55,10 @@ public class NumerosRomanosTest {
         Assert.assertEquals(ochoEnRomano, "VIII");
     }
 
+    @Test
+    public void nueveANumeroRomano(){
+        String nueveEnRomano = numerosRomanos.convertir(9);
+        Assert.assertEquals(nueveEnRomano, "IX");
+    }
+
 }
