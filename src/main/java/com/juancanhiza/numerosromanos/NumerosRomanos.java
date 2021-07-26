@@ -12,29 +12,21 @@ public class NumerosRomanos {
         }
 
         if (numeroNatural <= 3){
-            return concatenarUnidadesRomanas(numeroNatural);
+            return concatenarUnidadesRomanas(1, numeroNatural, "");
         }
 
         if (numeroNatural <= 8){
-            return concatenarUnidadesRomanasDesdeV(numeroNatural);
+            return concatenarUnidadesRomanas(6, numeroNatural, "V");
         }
 
         return null;
     }
 
-    private String concatenarUnidadesRomanas(int inicioNatural) {
-        String resultado = "";
-        for (int i = 1; i <= inicioNatural; i++) {
-            resultado += "I";
+    private String concatenarUnidadesRomanas(int inicio, int numeroNatural, String inicioRomano){
+        for (int i = inicio; i <= numeroNatural; i++) {
+            inicioRomano += "I";
         }
-        return resultado;
-    }
+        return inicioRomano;
 
-    private String concatenarUnidadesRomanasDesdeV(int inicioNatural) {
-        String resultado = "V";
-        for (int i = 6; i <= inicioNatural; i++) {
-            resultado += "I";
-        }
-        return resultado;
     }
 }
