@@ -13,4 +13,10 @@ public class NumerosRomanosTest {
         Assert.assertEquals(unoEnRomano, "I");
     }
 
+    @Test
+    public void DosANumeroRomano(){
+        String dosEnRomano = numerosRomanos.convertir(2);
+        Assert.assertEquals(dosEnRomano, "II");
+    }
+
 }
