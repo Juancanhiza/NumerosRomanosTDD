@@ -17,6 +17,8 @@ public class NumerosRomanos {
                 return "VI";
             case 7:
                 return "VII";
+            case 8:
+                return "VIII";
             default:
                 return null;
         }
