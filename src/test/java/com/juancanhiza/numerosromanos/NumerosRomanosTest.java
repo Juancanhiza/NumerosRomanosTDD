@@ -203,6 +203,39 @@ public class NumerosRomanosTest {
         Assert.assertEquals(decenasRomano.get(5), "LV");
     }
 
+    @Test
+    public void numerosGrandesARomano(){
+        List<Integer> decenas = Arrays.asList(100, 200, 300, 400, 500, 600, 700, 800, 900, 1000);
+
+        List<String> decenasRomano = decenas.stream()
+                .map(numero -> numerosRomanos.convertir(numero))
+                .collect(Collectors.toList());
+
+        Assert.assertEquals(decenasRomano.get(0), "C");
+        Assert.assertEquals(decenasRomano.get(1), "CC");
+        Assert.assertEquals(decenasRomano.get(2), "CCC");
+        Assert.assertEquals(decenasRomano.get(3), "CD");
+        Assert.assertEquals(decenasRomano.get(4), "D");
+        Assert.assertEquals(decenasRomano.get(5), "DC");
+        Assert.assertEquals(decenasRomano.get(6), "DCC");
+        Assert.assertEquals(decenasRomano.get(7), "DCCC");
+        Assert.assertEquals(decenasRomano.get(8), "CM");
+        Assert.assertEquals(decenasRomano.get(9), "M");
+    }
+
+    @Test
+    public void numerosGrandesrRandomARomano(){
+        List<Integer> decenas = Arrays.asList(115, 580, 999);
+
+        List<String> decenasRomano = decenas.stream()
+                .map(numero -> numerosRomanos.convertir(numero))
+                .collect(Collectors.toList());
+
+        Assert.assertEquals(decenasRomano.get(0), "CXV");
+        Assert.assertEquals(decenasRomano.get(1), "DLXXX");
+        Assert.assertEquals(decenasRomano.get(2), "CMXCIX");
+    }
+
 
 
 }

@@ -1,66 +1,50 @@
 package com.juancanhiza.numerosromanos;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class NumerosRomanos {
+
+    private static final List<String> SIMBOLOS_ROMANOS = Arrays.asList("I", "V", "X", "L", "C", "D", "M");
 
     public String convertir(int numeroNatural) {
 
         char[] numeros = String.valueOf(numeroNatural).toCharArray();
 
-        if (numeros.length == 1) {
-            return pasarUnidades(numeroNatural);
-        } else {
-            int unidad = Character.getNumericValue(numeros[1]);
-            int decena = Character.getNumericValue(numeros[0]);
-            return pasarDecenas(decena) + pasarUnidades(unidad);
+        int inc = 0;
+        String resultado = "";
+
+        for (int i = numeros.length - 1; i >= 0; i--) {
+            int numeroDecimal = Character.getNumericValue(numeros[i]);
+            String numeroRomano = pasarARomano(numeroDecimal, inc, 1+inc, 2+inc);
+
+            resultado = numeroRomano + resultado;
+            inc+=2;
         }
+
+        return resultado;
     }
 
-    private String pasarUnidades(int numeroNatural) {
+    private String pasarARomano(int numeroNatural, int menor, int medio, int mayor) {
         switch (numeroNatural){
             case 4:
-                return "IV";
+                return SIMBOLOS_ROMANOS.get(menor) + SIMBOLOS_ROMANOS.get(medio);
             case 9:
-                return "IX";
+                return SIMBOLOS_ROMANOS.get(menor) + SIMBOLOS_ROMANOS.get(mayor);
         }
 
         if (numeroNatural <= 3)
-            return concatenarUnidadesRomanas(1, numeroNatural, "");
+            return concatenarUnidadesRomanas(1, numeroNatural, "", SIMBOLOS_ROMANOS.get(menor));
         if (numeroNatural <= 8)
-            return concatenarUnidadesRomanas(6, numeroNatural, "V");
+            return concatenarUnidadesRomanas(6, numeroNatural, SIMBOLOS_ROMANOS.get(medio), SIMBOLOS_ROMANOS.get(menor));
 
         return null;
     }
 
-    private String pasarDecenas(int numeroNatural) {
-        switch (numeroNatural) {
-            case 1:
-                return "X";
-            case 2:
-                return "XX";
-            case 3:
-                return "XXX";
-            case 4:
-                return "XL";
-            case 5:
-                return "L";
-            case 6:
-                return "LX";
-            case 7:
-                return "LXX";
-            case 8:
-                return "LXXX";
-            case 9:
-                return "XC";
-            default:
-                return null;
-        }
-    }
-
-    private String concatenarUnidadesRomanas(int inicio, int numeroNatural, String inicioRomano){
+    private String concatenarUnidadesRomanas(int inicio, int numeroNatural, String inicioRomano, String iteradorRomano){
         for (int i = inicio; i <= numeroNatural; i++) {
-            inicioRomano += "I";
+            inicioRomano += iteradorRomano;
         }
         return inicioRomano;
-
     }
 }
